@@ -6,14 +6,14 @@ CKEDITOR.plugins.add('btalerts', {
         const config = editor.config,
             lang = editor.lang.btalerts,
             alerts = {
-                primary: 'color: #004085; background-color: #cce5ff; padding: 1.25rem; box-sizing: border-box;',
-                secondary: 'color: #383d41; background-color: #e2e3e5; padding: 1.25rem; box-sizing: border-box;',
-                success: 'color: #155724; background-color: #d4edda; padding: 1.25rem; box-sizing: border-box;',
-                danger: 'color: #721c24; background-color: #f8d7da; padding: 1.25rem; box-sizing: border-box;',
-                warning: 'color: #856404; background-color: #fff3cd; padding: 1.25rem; box-sizing: border-box;',
-                info: 'color: #0c5460; background-color: #d1ecf1; padding: 1.25rem; box-sizing: border-box;',
-                light: 'color: #818182; background-color: #fefefe; padding: 1.25rem; box-sizing: border-box;',
-                dark: 'color: #1b1e21; background-color: #d6d8d9; padding: 1.25rem; box-sizing: border-box;'
+                primary: 'color: #004085; background-color: #cce5ff;',
+                secondary: 'color: #383d41; background-color: #e2e3e5;',
+                success: 'color: #155724; background-color: #d4edda;',
+                danger: 'color: #721c24; background-color: #f8d7da;',
+                warning: 'color: #856404; background-color: #fff3cd;',
+                info: 'color: #0c5460; background-color: #d1ecf1;',
+                light: 'color: #818182; background-color: #fefefe;',
+                dark: 'color: #1b1e21; background-color: #d6d8d9;'
             },
             re = new RegExp(`alert-(${CKEDITOR.tools.objectKeys(alerts).join('|')})`, 'g');
 
@@ -28,7 +28,7 @@ CKEDITOR.plugins.add('btalerts', {
             init: function(){
                 this.startGroup(lang.panelTitle);
                 for(const item in alerts)
-                    this.add(item, `<p style="${alerts[item]}">${lang[item]}</p>`, lang[item]);
+                    this.add(item, `<p style="${alerts[item]}padding: 1.25rem; box-sizing: border-box;">${lang[item]}</p>`, lang[item]);
             },
             onClick: function(item){
                 editor.focus();
