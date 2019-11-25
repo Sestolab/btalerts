@@ -33,20 +33,20 @@ CKEDITOR.plugins.add('btalerts', {
             onClick: function(item){
                 editor.focus();
                 editor.fire('saveSnapshot');
-                if (element.hasClass(`alert-${item}`) || !element.hasClass('alert'))
-                    element.toggleClass('alert').toggleAttribute('role', 'alert');
-                element.toggleClass(`alert-${item}`, re);
-                for (const link of element.getElementsByTag('a').toArray())
-                    link.toggleClass((element.hasClass('alert') == !link.hasClass('alert-link')) ?  'alert-link' : null);
+                if (this.element.hasClass(`alert-${item}`) || !this.element.hasClass('alert'))
+                    this.element.toggleClass('alert').toggleAttribute('role', 'alert');
+                this.element.toggleClass(`alert-${item}`, re);
+                for (const link of this.element.getElementsByTag('a').toArray())
+                    link.toggleClass((this.element.hasClass('alert') == !link.hasClass('alert-link')) ?  'alert-link' : null);
                 editor.fire('saveSnapshot');
             },
             onOpen: function(){
-                element = editor.getSelection().getStartElement();
-                if(element)
-                    element = element.getAscendant({'div': 1, 'p': 1}, true);
+                this.element = editor.getSelection().getStartElement();
+                if(this.element)
+                    this.element = this.element.getAscendant({'div': 1, 'p': 1}, true);
 
-                if (element && element.hasClass('alert'))
-                    this.mark(element.matchClass(re)[0].replace('alert-', ''));
+                if (this.element && this.element.hasClass('alert'))
+                    this.mark(this.element.matchClass(re)[0].replace('alert-', ''));
             }
         });
     }
